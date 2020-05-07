@@ -32,7 +32,9 @@ if ( !defined( 'ABSPATH' ) )
 
 function disable_icl_metabox() {
     global $post;
-    \remove_meta_box('icl_div_config',$post->posttype,'normal');
+    if ( $post ) {
+        \remove_meta_box('icl_div_config',$post->posttype,'normal');
+    }
 }
 
 add_action('admin_head', 'Tekno_Remove_Multilingual_Content_Setup_Metabox\disable_icl_metabox',99);
